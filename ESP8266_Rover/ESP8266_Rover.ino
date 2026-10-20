@@ -71,7 +71,7 @@ const unsigned long STA_TIMEOUT_MS = 8000;  // how long to try connecting before
 #define IN3 D6
 #define IN4 D7
 #define SERVO_PIN D3
-#define LED_PIN   D4
+#define LED_PIN   D8
 
 Servo servo;
 
@@ -92,15 +92,15 @@ AsyncWebSocket ws("/ws");
 // =========================================================
 void setLeftMotor(int spd) {              // spd: -255..255
   spd = constrain(spd, -255, 255);
-  digitalWrite(IN1, spd >= 0 ? HIGH : LOW);
-  digitalWrite(IN2, spd >= 0 ? LOW : HIGH);
+  digitalWrite(IN1, spd >= 0 ? LOW : HIGH);
+  digitalWrite(IN2, spd >= 0 ? HIGH : LOW);
   analogWrite(ENA, abs(spd));
 }
 
 void setRightMotor(int spd) {              // spd: -255..255
   spd = constrain(spd, -255, 255);
-  digitalWrite(IN3, spd >= 0 ? HIGH : LOW);
-  digitalWrite(IN4, spd >= 0 ? LOW : HIGH);
+  digitalWrite(IN3, spd >= 0 ? LOW : HIGH);
+  digitalWrite(IN4, spd >= 0 ? HIGH : LOW);
   analogWrite(ENB, abs(spd));
 }
 
